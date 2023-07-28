@@ -1,0 +1,281 @@
+:root{
+    --Red: hsl(0, 100%, 66%);
+    --White: hsl(0, 0%, 100%);
+    --Light-grayish-violet: hsl(270, 3%, 87%);
+    --Dark-grayish-violet: hsl(279, 6%, 55%);
+    --Very-dark-violet: hsl(278, 68%, 11%);
+    --ff-primaria:'Space Grotesk', sans-serif;
+}
+
+html { 
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {  
+    box-sizing: inherit;
+}
+
+body{
+    font-size: 1.6rem;
+    font-family: var(--ff-primaria);
+    min-height: 100vh;
+}
+
+.hidden{
+    display: none !important; /* para que a pesar de que este aqui el hidden, mas abajo con las clases, se mostraria en el HTML
+    entonces al ponerle el !important respetara el hidden con el display none */
+}
+
+.error{
+    border: 2px solid var(--Red);
+}
+
+.error_message{
+    gap: 0;
+}
+
+.error_message::after{
+    content: "can't be blank";
+    color: var(--Red);
+    margin-top: .2rem;
+
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.left_section{
+    min-height: 100vh;
+    width: 40%;
+    background-image: url(/images/bg-main-desktop.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.cards{
+    position: absolute;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    left: 100%; /* con esto se puede salir del parent element */
+    transform:  translate(-50%,-50%); /* lo de arriba fue para que con esto quede en medio a menos 50% */
+}
+
+.front_card{
+    position: relative;
+    transform: translateX(-10rem);
+}
+
+.card_logo{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+#number{
+    position: absolute;
+    color: var(--White);
+    bottom: 5rem;
+    left: 2rem;
+    letter-spacing: .2rem;
+}
+
+.card_info{
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 3rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--White);
+}
+
+.back_card{
+    position: relative;
+}
+
+#cvc{
+    position: absolute;
+    right: 5rem;
+    top: 11rem;
+    color: var(--Light-grayish-violet);
+}
+
+.right_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.right_section form{
+    display: grid;
+    gap: 1rem;
+    width: 35rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+label{
+    color: var(--Very-dark-violet);
+    text-transform: uppercase;
+}
+
+input{
+    padding: .5rem;
+    font-size: 1.8rem;
+    border: 1px solid var(--Dark-grayish-violet);
+    border-radius: .6rem;
+}
+
+input::placeholder{
+    font-family: inherit;
+    color: var(--Dark-grayish-violet);
+}
+
+input::focus{
+    outline-color: hsl(249,99%,64%);
+}
+
+.grid_1{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 span;
+}
+
+.grid_2{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 span;
+}
+
+.grid_3{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 span;
+}
+
+.card_information{
+    display: flex;
+    grid-column: 2 span;
+    gap: 1rem;
+}
+
+#card_date{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 span;
+}
+
+#card_date .two_inp{
+    display: flex;
+}
+
+.two_inp div{
+    flex-direction: column;
+}
+
+#card_date div input{
+    width: 7rem;
+    margin-inline: .5rem;
+    margin-left: 0;
+}
+
+#card_cvc{
+    width: 100%;
+}
+
+form button{
+    grid-column: 2 span;
+    font-size: 1.8rem;
+    height: 5rem;
+    color: var(--White);
+    border-radius: .6rem;
+    background-color: var(--Very-dark-violet);
+    cursor: pointer;
+}
+
+.thank{
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.thank h1{
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+}
+
+.thank p{
+    font-size: 1.8rem;
+    color: var(--Dark-grayish-violet);
+}
+
+.thank button{
+    color: var(--White);
+    width: 100%;
+    border-radius: .6rem;
+    padding: 1rem;
+    font-size: 1.8rem;
+    background-color: var(--Very-dark-violet);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1440px) {
+    .front_card, .front_card img, .back_card, .back_card img{
+        width: 30rem;
+    }
+    .card_container .card_logo{
+        width: 5rem;
+    }
+    #number{
+        font-size: 1.1rem;
+    }
+    #cvc{
+        top: 42%;
+        right: 12%;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .container{
+        flex-direction: column;
+    }
+    .front_card, .front_card img, .back_card, .back_card img{
+        width: 25rem;
+    }
+
+    .left_section{
+        width: 100%;
+        min-height: 38vh;
+        background-image: url(../images/bg-main-mobile.png);
+    }
+    .cards{
+        flex-direction: column-reverse;
+        left: 63%;
+        top: 65%;
+        gap: 0;
+    }
+
+    .back_card{
+        transform: translateY(6rem);
+    }
+
+    .front_card{
+        z-index: 100;
+    }
+
+    .right_section{
+        margin-top: 6rem;
+    }
+
+}
